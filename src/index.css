@@ -1,0 +1,158 @@
+:root {
+  --text: #333;
+  --bg: #ffffff;
+  --accent: #ff3366;
+  --accent-soft: #ffe4ec;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+/* FULL WIDTH */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* HEADINGS */
+h1,
+h2,
+h3 {
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+/* 🔥 GLASS CARD BASE */
+.card {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+/* HOVER EFFECT */
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  transition: all 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
+
+/* 🔥 BUTTON */
+button {
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4);
+}
+
+/* 🔥 INPUT + SELECT */
+input,
+select {
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 51, 102, 0.15);
+}
+
+/* 🔥 SCROLLBAR (premium feel) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* 🔥 ANIMATION (TRACKER) */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7);
+  }
+  70% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 10px rgba(255, 51, 102, 0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 🔥 FADE IN (for cards / pages) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+/* 🔥 SOFT SHADOW UTIL */
+.soft-shadow {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* 🔥 BADGE (used in dashboard) */
+.badge {
+  background: var(--accent);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-size: 11px;
+}
+
+/* 🔥 STATUS PILLS */
+.status-pill {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+/* 🔥 LINK HOVER */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: var(--accent);
+}
