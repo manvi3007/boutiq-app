@@ -156,3 +156,13 @@ a {
 a:hover {
   color: var(--accent);
 }
+
+@media (max-width: 768px) {
+  nav div[style*="links"] {
+    display: none !important;
+  }
+
+  nav div[style*="hamburger"] {
+    display: block !important;
+  }
+}

@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import { useState } from "react"; // ✅ added
 
 function Navbar({ user, role }) {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false); // ✅ mobile menu state
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -14,7 +16,17 @@ function Navbar({ user, role }) {
     <div style={styles.nav}>
       <h2 onClick={() => navigate("/")}>Boutiq</h2>
 
-      <div style={styles.links}>
+      {/* 🍔 HAMBURGER (mobile only) */}
+      <div style={styles.hamburger} onClick={() => setOpen(!open)}>
+        ☰
+      </div>
+
+      <div
+        style={{
+          ...styles.links,
+          ...(open ? styles.mobileMenu : {}),
+        }}
+      >
         <span onClick={() => navigate("/")}>Home</span>
         <span onClick={() => navigate("/designs")}>Designs</span>
 
@@ -54,6 +66,7 @@ const styles = {
     padding: "15px 30px",
     background: "#fff",
     borderBottom: "1px solid #eee",
+    position: "relative", // ✅ needed for dropdown
   },
 
   links: {
@@ -70,5 +83,25 @@ const styles = {
     border: "none",
     borderRadius: "6px",
     cursor: "pointer",
+  },
+
+  /* 🍔 hidden on desktop */
+  hamburger: {
+    display: "none",
+    fontSize: "24px",
+    cursor: "pointer",
+  },
+
+  /* 📱 mobile dropdown */
+  mobileMenu: {
+    position: "absolute",
+    top: "60px",
+    right: "0",
+    background: "#fff",
+    flexDirection: "column",
+    width: "100%",
+    padding: "20px",
+    gap: "15px",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
   },
 };
